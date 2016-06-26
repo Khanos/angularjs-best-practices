@@ -10,7 +10,20 @@ Este curso está orientado al desarrollador con experiencia en el uso del framew
 
 ### <i class="icon-book"></i> **Temario** ###
 0. Introducción
-0.
+0. Organizando el Código.
+	* Archivos y Directorios.
+	* Módulos.
+	* Namespacing
+0. Controladores y Servicios.
+	* Guías de diseño para Controladores.
+	* Guías de diseño para Servicios.
+	* Modificación del código.
+0. Directivas y Vistas.
+	* Nombres y Propositos de una Directiva.
+	* Controlador vs Link.
+	* Programar declarativamente.
+	* EL DOM.
+0. Practica Final.
 
 ### <i class="icon-pencil"></i> **Descripción** ###
 AngularJS - Buenas prácticas y guía de estilos para el desarrollo con AngularJs.
