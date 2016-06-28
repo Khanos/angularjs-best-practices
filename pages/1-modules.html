@@ -14,11 +14,28 @@
         <div class="container">
             <div ng-app="app">
                 <h1>Modules</h1>
+                <hr>
+                <div ng-controller="controller">
+                    {{name}}
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
         <script type="text/javascript">
-            angular.module('app', []);
+            angular.module('app', [
+                'app3',
+                'app2'
+            ]);
+
+            angular.module('app2', []);
+            angular.module('app3', []);
+
+            angular.module('app2').controller('controller', function($scope) {
+                $scope.name = 'Controlador en la app2';
+            });
+            angular.module('app3').controller('controller', function($scope) {
+                $scope.name = 'Controlador en la app3';
+            });
         </script>
     </body>
 </html>
