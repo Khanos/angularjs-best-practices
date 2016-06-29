@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AngularJs - Fundamental</title>
+        <link rel="shortcut icon" href="home.ico">
+        <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../assets/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div ng-app="app">
+                <h1>Modulos <small><a href="/">ir a inicio</a></small></h1>
+                <div ng-controller="Controller1">
+                    {{name}}
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../../../node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript">
+            angular.module('app', ['app2', 'app3']);
+            angular.module('app2', []);
+            angular.module('app3', []);
+
+            angular.module('app2').controller('Controller1', function($scope) {
+                $scope.name = 'Controller 1 en la App 2';
+            });
+
+            angular.module('app3').controller('Controller1', function($scope) {
+                $scope.name = 'Controller 1 en la App 3';
+            });
+        </script>
+    </body>
+</html>

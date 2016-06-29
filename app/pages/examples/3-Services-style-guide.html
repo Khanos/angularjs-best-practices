@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AngularJs - Fundamental</title>
+        <link rel="shortcut icon" href="home.ico">
+        <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../assets/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div ng-app="app">
+                <h1>Controladores y Servicios. <small><a href="/">ir a inicio</a></small></h1>
+                <h3>Guías de diseño para Servicios.</h3>
+                <div ng-controller="scheduleCtrl">
+                    {{title}}
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../../../node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript">
+            var app = angular.module('app', []);
+
+            angular.module('app').controller('scheduleCtrl',['$scope', 'registration', function($scope, registration) {
+              $scope.title = registration.title;
+            }]);
+
+            // As Value
+            app.value('registration', { title: 'Service from Service' });
+
+            // // As Factory
+            // app.factory('registration', function() {
+            //     var registration = this;
+            //     registration.title = 'Service from Service'
+            //     return registration;
+            // });
+            //
+            // // As Service
+            // app.service('registration', function() {
+            //   return {
+            //     title: 'Service from Service'
+            //   }
+            // })
+            //
+            // // As Provider
+            // app.config(function($provide) {
+            //     $provide.provider('registration', function() {
+            //         return {
+            //             $get: function() {
+            //                 return {
+            //                     title: 'Service from Service'
+            //                 }
+            //             }
+            //         }
+            //     })
+            // });
+        </script>
+    </body>
+</html>
