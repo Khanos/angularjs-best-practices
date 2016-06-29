@@ -25,18 +25,24 @@
             var app = angular.module('app', []);
 
             angular.module('app').controller('scheduleCtrl',['$scope', 'registration', function($scope, registration) {
-              $scope.title = registration.title;
+                console.log(registration);
+                $scope.title = registration.title;
             }]);
 
             // As Value
-            app.value('registration', { title: 'Service from Service' });
+            // app.value('registration', {
+            //     title: 'Estoy en el servicio'
+            // });
 
             // // As Factory
-            // app.factory('registration', function() {
-            //     var registration = this;
-            //     registration.title = 'Service from Service'
-            //     return registration;
-            // });
+            app.factory('registration', function() {
+                var registration = this;
+                registration.title = 'Estoy en el servicio como factory',
+                registration.func = function() {
+                    return alert('Hola soy una funcion')
+                }
+                return registration;
+            });
             //
             // // As Service
             // app.service('registration', function() {

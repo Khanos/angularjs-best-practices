@@ -6,5 +6,5 @@ angular
         return {
             restrict: 'E',
             templateUrl: 'app/shared/header/partials/header.html'
-        }
+        };
     }
