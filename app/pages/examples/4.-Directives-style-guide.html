@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AngularJs - Fundamental</title>
+        <link rel="shortcut icon" href="home.ico">
+        <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../assets/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div ng-app="app">
+                <h1>CDirectivas y Vistas. <small><a href="/">ir a inicio</a></small></h1>
+                <h3>Guías de diseño para <strong>Directivas</strong></h3>
+                <hr>
+                <my-directive></my-directive>
+                <section>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>Este es un campo: </label><input type="text" name="name" value="">
+                        </div>
+                    </div>
+                </section>
+                <my-directive></my-directive>
+
+                <hr>
+
+                <directive-link>{{title}}</directive-link>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Este es un campo: </label><input type="text" name="name" value="">
+                        <label>Este es un campo: </label><input type="text" name="name" value="">
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            Menu
+                        </p>
+                        <widget-direct/>
+                    </div>
+                </div>
+                <div class="row" ng-show="ready">
+                    <div class="col-sm-4">
+                        <widget-direct/>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>
+                            aucibus justo tempor, vulputate sapien ante, wisi mauris ut et eget. In tempor suspendisse ipsum dui ornare. Eget volutpat non pharetra, vestibulum sit est feugiat. Eu diam enim urna nulla non, vivamus donec, sit non nunc pulvinar tempor, erat turpis felis, pede nullam id mollis venenatis. Inceptos ipsum eros felis, magna nibh odio rhoncus ac, metus consectetuer tincidunt orci, vestibulum mus lacus vestibulum a. Fusce mollis orci, elit lorem nec ligula conubia vivamus mollis. Nisl justo massa velit velit, sed sed in risus scelerisque. Odio diam sit diam mollis con
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../../../node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript">
+            var app = angular.module('app', []);
+
+            app.directive('myDirective', function() {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    template: '<h4><strong>Esta es una Directiva</strong><small> Utilizando template</small></h4>'
+                };
+            });
+
+            app.directive('section', function() {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    template: '<h4><strong>Adios al section</strong><small> Se sobrescribe</small></h4>'
+                };
+            });
+
+            // app.directive('myDirective', function() {
+            //     return {
+            //         restrict: 'E',
+            //         replace: true,
+            //         template: '<h4><strong>Esta es otra Directiva</strong><small> Con el mismo nombre</small></h4>'
+            //     };
+            // });
+
+            app.directive('directiveLink', function() {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    link: function($scope) {
+                        $scope.title = "Esta es una diretiva con link - Parte Uno"
+                    }
+                };
+            });
+
+            app.directive('directiveLink', function() {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    link: function($scope) {
+                        $scope.title = "Esta es una diretiva con link - Parte Dos"
+                    }
+                };
+            });
+
+            // app.directive('widgetDirect', function() {
+            //     return {
+            //         restrict: 'E',
+            //         replace: true,
+            //         template: '<div style="background-color: yellow;">' +
+            //                     '<ul>' +
+            //                         '<li ng-repeat="menu in content"><a href="#" ng-click="click(menu)" ng-cloak>{{menu}}</a></li>' +
+            //                     '</ul>' +
+            //                   '</div>',
+            //         controller: function($scope) {
+            //             $scope.content = {
+            //                 menu : 'Menu Uno',
+            //                 menu2: 'Menu Dos',
+            //                 menu3: 'Menu Tres',
+            //                 menu4: 'Menu Cuatro'
+            //             };
+            //             $scope.click = function(str) {
+            //                 console.log(str);
+            //             }
+            //         }
+            //     };
+            // });
+
+            app.directive('widgetDirect', function() {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    template: '<div style="background-color: yellow;">' +
+                                '<ul>' +
+                                    '<li ng-repeat="menu in content"><a href="#" ng-click="click(menu)" ng-cloak>{{menu}}</a></li>' +
+                                '</ul>' +
+                              '</div>',
+                    controller: function($scope, $timeout) {
+                        $scope.ready = false;
+                        $timeout(function () {
+                            $scope.ready = true;
+                            $scope.content = {
+                                menu : 'Menu Uno',
+                                menu2: 'Menu Dos',
+                                menu3: 'Menu Tres',
+                                menu4: 'Menu Cuatro'
+                            };
+                        }, 1000);
+                        $scope.click = function(str) {
+                            console.log(str);
+                        }
+                    }
+                };
+            });
+
+        </script>
+    </body>
+</html>
